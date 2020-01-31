@@ -173,8 +173,8 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
 {
     [super viewDidLoad];
     
-    self.drawerView.frame = self.view.bounds;
-    self.paneView.frame = self.view.bounds;
+    self.drawerView.frame = self.view.frame;
+    self.paneView.frame = self.view.frame;
     [self.view addSubview:self.drawerView];
     [self.view addSubview:self.paneView];
     
@@ -329,7 +329,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         [newViewController willMoveToParentViewController:self];
         [newViewController beginAppearanceTransition:YES animated:NO];
 		[self addChildViewController:newViewController];
-        newViewController.view.frame = containerView.bounds;
+        newViewController.view.frame = containerView.frame;
 		[containerView addSubview:newViewController.view];
 		[newViewController didMoveToParentViewController:self];
         [newViewController endAppearanceTransition];
@@ -355,7 +355,7 @@ void MSDynamicsDrawerDirectionActionForMaskedValues(NSInteger direction, MSDynam
         [existingViewController didMoveToParentViewController:nil];
         [existingViewController endAppearanceTransition];
         [newViewController beginAppearanceTransition:YES animated:NO];
-        newViewController.view.frame = containerView.bounds;
+        newViewController.view.frame = CGRectMake(containerView.bounds.origin.x, containerView.frame.origin.y, containerView.bounds.size.width, containerView.frame.size.height);
         [self addChildViewController:newViewController];
         [containerView addSubview:newViewController.view];
         [newViewController didMoveToParentViewController:self];
